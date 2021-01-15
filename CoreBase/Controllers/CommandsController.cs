@@ -2,6 +2,7 @@
 using CoreBase.Data;
 using CoreBase.Dtos;
 using CoreBase.Models;
+using CoreBase.Options;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -129,5 +130,21 @@ namespace CoreBase.Controllers
             return NoContent();
         }
         #endregion
+
+        [HttpGet("sendEmail")]
+        public  IActionResult SendEmail()
+        {
+            EmailOption options = new EmailOption
+            {
+                ToEmails = new List<string>() { "test@gmail.com" },
+                PlaceHolders = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("{{UserName}}", "John")
+                }
+            };
+
+            await _emailService.SendTestEmail(options);
+            return NoContent();
+        }
     }
 }
