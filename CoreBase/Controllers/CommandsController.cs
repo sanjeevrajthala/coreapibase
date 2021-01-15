@@ -2,6 +2,8 @@
 using CoreBase.Data;
 using CoreBase.Dtos;
 using CoreBase.Models;
+using CoreBase.Options;
+using CoreBase.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -21,13 +23,15 @@ namespace CoreBase.Controllers
         #region Declared Variables
         private readonly ICommanderRepo _repository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
         #endregion
 
         #region Constructor
-        public CommandsController(ICommanderRepo repository, IMapper mapper)
+        public CommandsController(ICommanderRepo repository, IMapper mapper, IEmailService emailService)
         {
             _repository = repository;
             _mapper = mapper;
+            _emailService = emailService;
         }
         #endregion
 
@@ -127,6 +131,30 @@ namespace CoreBase.Controllers
             _repository.SaveChanges();
 
             return NoContent();
+        }
+        #endregion
+
+        #region Send Email
+        [HttpGet("SendEmail")]
+        public async Task<IActionResult> SendEmail() {
+            try
+            {
+                EmailOption options = new EmailOption
+                {
+                    ToEmails = new List<string>() { "test@test.com", "sanjeev@hello.com" },
+                    PlaceHolders = new List<KeyValuePair<string, string>>() {
+                    new KeyValuePair<string, string> ("{{UserName}}", "JOhn"),
+                    new KeyValuePair<string, string> ("{{Link}}", "https://code-maze.com/send-email-with-attachments-aspnetcore-2/")
+                }
+                };
+
+                await _emailService.SendTestEmail(options)
+                    ; return NoContent();
+            }
+            catch(Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
         #endregion
     }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\techrida\\.net\\projects\\CoreBase\\CoreBase\\CoreBase.csproj": {}
+    "D:\\Projects\\CoreTest\\coreapibase\\corebase\\CoreBase.csproj": {}
   },
   "projects": {
-    "E:\\techrida\\.net\\projects\\CoreBase\\CoreBase\\CoreBase.csproj": {
+    "D:\\Projects\\CoreTest\\coreapibase\\corebase\\CoreBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\techrida\\.net\\projects\\CoreBase\\CoreBase\\CoreBase.csproj",
+        "projectUniqueName": "D:\\Projects\\CoreTest\\coreapibase\\corebase\\CoreBase.csproj",
         "projectName": "CoreBase",
-        "projectPath": "E:\\techrida\\.net\\projects\\CoreBase\\CoreBase\\CoreBase.csproj",
-        "packagesPath": "C:\\Users\\sanje\\.nuget\\packages\\",
-        "outputPath": "E:\\techrida\\.net\\projects\\CoreBase\\CoreBase\\obj\\",
+        "projectPath": "D:\\Projects\\CoreTest\\coreapibase\\corebase\\CoreBase.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\CoreTest\\coreapibase\\corebase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sanje\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

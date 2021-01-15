@@ -14,8 +14,8 @@ namespace CoreBase.Dtos
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
 
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?!.*(.)\1\1)[a-zA-Z0-9@]{6,12}$",
-            ErrorMessage = "Password need an uppercare, a special and a numeric characters with only two repetitive characters")]
+        //[RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?!.*(.)\1\1)[a-zA-Z0-9@]{6,12}$",
+        //    ErrorMessage = "Password need an uppercare, a special and a numeric characters with only two repetitive characters and 6-12 char long")]
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

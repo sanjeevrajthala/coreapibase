@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CoreBase.Services
 {
-    public class EmailService
+    public class EmailService:IEmailService
     {
         private const string templatePath = @"EmailTemplates/{0}.html";
         private readonly EmailConfiguration _emailConfig;       
@@ -27,13 +27,14 @@ namespace CoreBase.Services
         {
             emailOptions.Subject = UpdatePlaceHolders("Hello {{UserName}}, reset your password.", emailOptions.PlaceHolders);
 
-            emailOptions.Body = UpdatePlaceHolders(GetEmailBody("ForgotPassword"), emailOptions.PlaceHolders);
+            emailOptions.Body = UpdatePlaceHolders(GetEmailBody("TestEmail"), emailOptions.PlaceHolders);
 
             await SendEmail(emailOptions);
         }
 
         private async Task SendEmail(EmailOption emailOptions)
         {
+
             MailMessage mail = new MailMessage
             {
                 Subject = emailOptions.Subject,
@@ -57,6 +58,10 @@ namespace CoreBase.Services
                 UseDefaultCredentials = _emailConfig.UseDefaultCredentials,
                 Credentials = networkCredential
             };
+            //attachment
+            //System.Net.Mail.Attachment attachment;
+            //attachment = new System.Net.Mail.Attachment("c:/Users/DELL/Pictures/test.jpg");
+            //mail.Attachments.Add(attachment);
 
             mail.BodyEncoding = Encoding.Default;
 
