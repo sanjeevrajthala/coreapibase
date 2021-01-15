@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreBase.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +9,6 @@ namespace CoreBase.Authentication
 {
     public class ApplicationUser:IdentityUser
     {
+        public virtual UserProfile UserProfile { get; set; }
     }
 }

@@ -133,5 +133,30 @@ namespace CoreBase.Controllers
             return NoContent();
         }
         #endregion
+
+        #region Send Email
+        [HttpGet("SendEmail")]
+        public async Task<IActionResult> SendEmail()
+        {
+            try
+            {
+                EmailOption options = new EmailOption
+                {
+                    ToEmails = new List<string>() { "test@test.com", "sanjeev@hello.com" },
+                    PlaceHolders = new List<KeyValuePair<string, string>>() {
+                    new KeyValuePair<string, string> ("{{UserName}}", "JOhn"),
+                    new KeyValuePair<string, string> ("{{Link}}", "https://code-maze.com/send-email-with-attachments-aspnetcore-2/")
+                }
+                };
+
+                await _emailService.SendTestEmail(options)
+                    ; return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+        #endregion
     }
 }
